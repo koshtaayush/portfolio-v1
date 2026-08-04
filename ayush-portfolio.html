@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms</title>
+<meta name="description" content="Ayush Koshta is a Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale. Currently at DocuSign, formerly Software Architect at Meesho." />
+<meta name="robots" content="index, follow" />
+<!-- TODO: replace with your real domain before deploying -->
+<link rel="canonical" href="https://ayushkoshta.dev/" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ayush Koshta" />
+<meta property="og:title" content="Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms" />
+<meta property="og:description" content="Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale. Currently at DocuSign, formerly Meesho." />
+<meta property="og:url" content="https://ayushkoshta.dev/" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms" />
+<meta name="twitter:description" content="Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          background: 'rgb(var(--bg-rgb) / <alpha-value>)',
+          foreground: 'rgb(var(--fg-rgb) / <alpha-value>)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root, [data-theme="light"] { --bg-rgb: 255 255 255; --fg-rgb: 10 10 10; }
+  [data-theme="dark"] { --bg-rgb: 10 10 10; --fg-rgb: 242 240 234; }
+  html, body { background: rgb(var(--bg-rgb)); color: rgb(var(--fg-rgb)); }
+  html { scroll-behavior: smooth; }
+  body { transition: background .3s ease, color .3s ease; }
+
+  .text-foreground\/85 { color: rgb(var(--fg-rgb) / .85); }
+  .text-foreground\/80 { color: rgb(var(--fg-rgb) / .8); }
+  .text-foreground\/70 { color: rgb(var(--fg-rgb) / .7); }
+  .text-foreground\/65 { color: rgb(var(--fg-rgb) / .65); }
+  .text-foreground\/60 { color: rgb(var(--fg-rgb) / .6); }
+  .text-foreground\/55 { color: rgb(var(--fg-rgb) / .55); }
+  .text-foreground\/45 { color: rgb(var(--fg-rgb) / .45); }
+  .text-foreground\/40 { color: rgb(var(--fg-rgb) / .4); }
+  .text-foreground\/30 { color: rgb(var(--fg-rgb) / .3); }
+  .bg-foreground\/20 { background: rgb(var(--fg-rgb) / .2); }
+  .bg-foreground\/10 { background: rgb(var(--fg-rgb) / .1); }
+  .bg-foreground\/6 { background: rgb(var(--fg-rgb) / .06); }
+  .border-foreground\/40 { border-color: rgb(var(--fg-rgb) / .4); }
+  .border-foreground\/25 { border-color: rgb(var(--fg-rgb) / .25); }
+  .border-foreground\/15 { border-color: rgb(var(--fg-rgb) / .15); }
+  .border-foreground\/10 { border-color: rgb(var(--fg-rgb) / .1); }
+
+  .bg-hero-grid {
+    background-image:
+      linear-gradient(90deg, rgb(var(--fg-rgb) / .07) 1px, transparent 1px),
+      linear-gradient(rgb(var(--fg-rgb) / .07) 1px, transparent 1px);
+    background-size: 30px 30px;
+    -webkit-mask-image: radial-gradient(85% 80% at 50% 0%, #000 0%, transparent 100%);
+    mask-image: radial-gradient(85% 80% at 50% 0%, #000 0%, transparent 100%);
+    transition: background-image .3s ease;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    background: rgb(var(--bg-rgb));
+    color: rgb(var(--fg-rgb));
+    padding: 10px 16px;
+    border: 1px solid rgb(var(--fg-rgb) / .4);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .skip-link:focus { left: 16px; top: 16px; }
+
+  /* Focus states */
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid rgb(var(--fg-rgb) / .6);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Light/dark segmented toggle */
+  .mode-toggle {
+    position: relative;
+    display: flex;
+    padding: 2px;
+    border-radius: 999px;
+    background: rgb(var(--fg-rgb) / .06);
+  }
+  .mode-toggle-slider {
+    position: absolute;
+    top: 2px; left: 2px;
+    height: calc(100% - 4px);
+    width: calc(50% - 2px);
+    border-radius: 999px;
+    background: rgb(var(--bg-rgb));
+    box-shadow: 0 1px 2px rgba(0,0,0,.12);
+    transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s ease;
+    z-index: 0;
+  }
+  .mode-toggle-slider.is-dark { transform: translateX(100%); }
+  .mode-toggle-option {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgb(var(--fg-rgb) / .5);
+    transition: color .2s ease;
+  }
+  .mode-toggle-option.active { color: rgb(var(--fg-rgb)); }
+
+  .logo-mark {
+    display: inline-block;
+    transition: transform .6s ease;
+  }
+  .logo-mark:hover { transform: rotate(180deg); }
+
+  .journey-logo-inline {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgb(var(--fg-rgb) / .15);
+    background: rgb(var(--bg-rgb));
+    padding: 3px;
+    object-fit: contain;
+    filter: grayscale(1) contrast(1.05);
+    opacity: .8;
+  }
+
+  /* Nav links */
+  .nav-link {
+    position: relative;
+    color: rgb(var(--fg-rgb) / .65);
+    transition: color .2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-link:hover, .nav-link:focus-visible { color: rgb(var(--fg-rgb)); }
+  .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    will-change: transform;
+  }
+  .btn-solid {
+    background: rgb(var(--fg-rgb));
+    color: rgb(var(--bg-rgb));
+    border: 1px solid rgb(var(--fg-rgb));
+  }
+  .btn-solid:hover { box-shadow: 0 8px 24px rgb(var(--fg-rgb) / .18); }
+  .btn-outline {
+    background: transparent;
+    color: rgb(var(--fg-rgb));
+    border: 1px solid rgb(var(--fg-rgb) / .3);
+  }
+  .btn-outline:hover { border-color: rgb(var(--fg-rgb) / .7); }
+
+  /* Cards */
+  .card {
+    border: 1px solid rgb(var(--fg-rgb) / .12);
+    border-radius: 14px;
+    background: rgb(var(--fg-rgb) / .02);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--fg-rgb) / .3);
+    box-shadow: 0 16px 36px rgb(var(--fg-rgb) / .08);
+  }
+
+  /* Case study details/summary */
+  details.wc-details summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: rgb(var(--fg-rgb) / .7);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 4px;
+  }
+  details.wc-details summary::-webkit-details-marker { display: none; }
+  details.wc-details summary::after {
+    content: '→';
+    transition: transform .2s ease;
+    display: inline-block;
+  }
+  details.wc-details[open] summary::after { transform: rotate(90deg); }
+  details.wc-details summary:hover { color: rgb(var(--fg-rgb)); }
+  .wc-dl dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgb(var(--fg-rgb) / .45);
+    margin-top: 14px;
+  }
+  .wc-dl dt:first-child { margin-top: 16px; }
+  .wc-dl dd { margin-top: 5px; font-size: 14px; line-height: 1.65; color: rgb(var(--fg-rgb) / .85); }
+
+  /* Reveal-on-scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Icon tiles for How I Think */
+  .icon-tile {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgb(var(--fg-rgb) / .18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body class="font-sans">
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main class="relative bg-background text-foreground">
+  <div class="bg-hero-grid pointer-events-none absolute inset-x-0 top-0 h-[560px] md:h-[680px]" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-5xl px-6 py-12 sm:px-8">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between">
+      <a href="#main-content" class="logo-mark text-2xl" aria-label="Ayush Koshta — home">✦</a>
+      <div class="flex items-center gap-6 sm:mr-6">
+        <nav aria-label="Primary" class="hidden gap-6 font-mono text-[12px] uppercase tracking-[0.22em] sm:flex">
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#thinking" class="nav-link">Thinking</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#writing" class="nav-link">Writing</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="mode-toggle">
+          <span class="mode-toggle-slider" id="pill-slider"></span>
+          <button type="button" class="mode-toggle-option" data-theme-choice="light" aria-label="Light mode">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          </button>
+          <button type="button" class="mode-toggle-option" data-theme-choice="dark" aria-label="Dark mode">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div id="main-content" class="mt-24 sm:mt-32">
+      <div class="font-mono text-[13px] text-foreground/70">Hi, I'm Ayush.</div>
+      <h1 class="mt-2 font-sans text-[44px] font-bold leading-[1.08] tracking-tight sm:text-[64px] md:text-[76px]">
+        I architect AI systems,<br>
+        developer platforms and<br>
+        software used by millions.
+      </h1>
+      <p class="mt-8 max-w-2xl text-[17px] leading-[1.7] text-foreground/80">
+        Lead Software Engineer at <b>DocuSign</b>. Former Software Architect at <b>Meesho</b>.
+        I build products that simplify complex workflows, accelerate engineering teams and deliver exceptional user experiences.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3" data-magnetic-group>
+        <a href="Ayush_Architect_Docusign.pdf" target="_blank" rel="noopener" class="btn btn-solid" data-magnetic>Resume</a>
+        <a href="#work" class="btn btn-outline" data-magnetic>Selected Work</a>
+        <a href="#writing" class="btn btn-outline" data-magnetic>Writing</a>
+        <a href="#contact" class="btn btn-outline" data-magnetic>Contact</a>
+      </div>
+    </div>
+
+    <!-- Impact stats -->
+    <div class="mt-24 border-t border-foreground/15 pt-10 sm:mt-28">
+      <h2 class="sr-only">Impact at a glance</h2>
+      <div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4" id="stats"></div>
+    </div>
+
+    <!-- About -->
+    <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">About</h2>
+      <div class="space-y-5 text-[17px] leading-[1.75] text-foreground/85">
+        <p>I think about software the way a city planner thinks about infrastructure — the interesting problem is rarely the single building, it's the roads, pipes and permits that let a thousand other people build without asking me first.</p>
+        <p>That's the thread through most of my work: <b>AI-powered enterprise agents</b>, <b>microfrontend platforms</b> serving thousands of requests a second, and <b>design systems</b> adopted across a dozen-plus teams. Different problems, same instinct — reduce the surface area a team has to think about so they can move faster on what actually matters.</p>
+        <p>I care about developer experience as much as user experience, about performance budgets as much as feature velocity, and about writing systems that are still legible to whoever inherits them in two years. Lately that means spending most of my time at the intersection of <b>agentic AI</b> and <b>enterprise platform engineering</b> — teaching large systems to do useful, permission-aware work without turning into a black box.</p>
+        <p><a href="mailto:koshtaayush@gmail.com" class="underline underline-offset-4">say hello →</a></p>
+      </div>
+    </div>
+
+    <!-- Selected Work -->
+    <div class="mt-24 sm:mt-28" id="work">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Selected Work</h2>
+      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Case studies, not thumbnails — the problem, the approach, the tradeoffs, and what happened after ship.</p>
+      <div class="mt-10 grid gap-5 md:grid-cols-2" id="work-cards"></div>
+    </div>
+
+    <!-- How I Think -->
+    <div class="mt-24 sm:mt-28" id="thinking">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">How I Think</h2>
+      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Software architecture is about enabling teams, not just building features. A few beliefs that shape how I make decisions.</p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="thinking-cards"></div>
+    </div>
+
+    <!-- Experience -->
+    <div class="mt-24 sm:mt-28" id="experience">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Experience</h2>
+      <div class="relative mt-10">
+        <div class="absolute left-1/2 top-2 bottom-2 w-px -translate-x-1/2 bg-foreground/20" aria-hidden="true"></div>
+        <ul class="space-y-10" id="entries"></ul>
+      </div>
+    </div>
+
+    <!-- Writing -->
+    <div class="mt-24 sm:mt-28" id="writing">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Writing</h2>
+      <p class="mt-3 text-[15px] text-foreground/55">Published on Meesho's engineering blog · 40% increase in internal readership</p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-3" id="writing-cards"></div>
+    </div>
+
+    <!-- Stack -->
+    <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]" id="stack-section">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Stack</h2>
+      <div class="grid gap-6 sm:grid-cols-2" id="stack"></div>
+    </div>
+
+    <!-- Outside work -->
+    <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]">
+      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Outside Work</h2>
+      <p class="text-[15px] leading-[1.8] text-foreground/60">Photography · Reading · Travel · Coffee · Learning guitar</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="mt-24 border-t border-foreground/15 pt-14 sm:mt-28" id="contact">
+      <h2 class="font-sans text-[36px] font-bold leading-[1.1] tracking-tight sm:text-[48px]">Let's build something meaningful.</h2>
+      <p class="mt-4 max-w-xl text-[17px] leading-[1.7] text-foreground/70">Whether it's AI systems, platform engineering or software architecture, I'd love to connect.</p>
+      <div class="mt-8">
+        <a href="mailto:koshtaayush@gmail.com" class="btn btn-solid" data-magnetic>koshtaayush@gmail.com</a>
+      </div>
+    </div>
+
+    <footer class="mt-24 flex flex-col gap-4 border-t border-foreground/15 pt-6 sm:mt-28 sm:flex-row sm:items-end sm:justify-between">
+      <div class="font-mono text-[12px] text-foreground/45">Designed &amp; built by Ayush · Always learning.</div>
+      <div class="flex gap-6 font-mono text-[13px]">
+        <!-- TODO: replace with real LinkedIn URL -->
+        <a href="#" class="underline underline-offset-4">LinkedIn</a>
+        <a href="mailto:koshtaayush@gmail.com" class="underline underline-offset-4">koshtaayush@gmail.com</a>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ayush Koshta",
+  "jobTitle": "Lead Software Engineer",
+  "worksFor": { "@type": "Organization", "name": "DocuSign" },
+  "alumniOf": [
+    { "@type": "Organization", "name": "Meesho" },
+    { "@type": "Organization", "name": "redBus" },
+    { "@type": "Organization", "name": "Mindtree" }
+  ],
+  "email": "mailto:koshtaayush@gmail.com",
+  "url": "https://ayushkoshta.dev/",
+  "description": "Software Architect building AI systems, developer platforms and software infrastructure at scale."
+}
+</script>
+
+<script>
+  const stats = [
+    { v: "11+", l: "Years" },
+    { v: "4K+", l: "Requests/sec" },
+    { v: "99.99%", l: "Platform uptime" },
+    { v: "15+", l: "Engineering teams" },
+    { v: "100+", l: "Reusable components" },
+    { v: "18%", l: "Increase in engagement" },
+    { v: "47%", l: "Reduction in manual effort" },
+  ];
+  document.getElementById('stats').innerHTML = stats.map(s => `
+    <div>
+      <div class="font-sans text-[30px] font-bold tracking-tight sm:text-[36px]">${s.v}</div>
+      <div class="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-foreground/55">${s.l}</div>
+    </div>
+  `).join('');
+
+  const workItems = [
+    {
+      co: "DocuSign", num: "01", title: "AI Admin Agent",
+      summary: "Architected and built an AI-powered enterprise agent using CopilotKit and LLM tool-calling.",
+      problem: "Admin workflows in the Customer Admin platform required manual, multi-step actions across several internal tools — slow, repetitive and error-prone at scale.",
+      approach: "Designed an AI agent on CopilotKit with LLM tool-calling, permission-aware execution, streaming responses and conversation state management across enterprise APIs — so the agent could act, not just chat.",
+      impact: "Cut manual admin effort by 47%, live in production for the Customer Admin org.",
+      tags: ["Tool Calling", "Permission-aware Execution", "Streaming Responses", "Conversation State", "Context Management", "Enterprise APIs"],
+    },
+    {
+      co: "Meesho", num: "02", title: "Microfrontend Platform",
+      summary: "Scalable microfrontend architecture serving 4,000+ requests/sec at 99.99% uptime.",
+      problem: "40+ engineers across independent teams needed to ship to the same web surface without blocking on a shared release train.",
+      approach: "Designed a module-federation based microfrontend platform with independent deploy pipelines, shared shell contracts and versioned dependencies.",
+      impact: "4,000+ req/sec in production at 99.99% uptime, cutting deployment time by 40%.",
+      tags: ["Module Federation", "Developer Platform", "Performance", "Architecture"],
+    },
+    {
+      co: "Meesho", num: "03", title: "Crystal Design System",
+      summary: "100+ reusable components adopted across 15+ engineering teams.",
+      problem: "Inconsistent UI and duplicated component work across product teams were slowing delivery and fragmenting the product experience.",
+      approach: "Built Crystal from the primitives up — 100+ accessible, typed components, full Storybook documentation and an adoption/governance model for contributing teams.",
+      impact: "Adopted by 15+ teams, cutting development time by 30%.",
+      tags: ["Storybook", "Accessibility", "Developer Productivity", "Governance"],
+    },
+    {
+      co: "DocuSign", num: "04", title: "Rspack Migration",
+      summary: "Migrated the build system from Webpack to Rspack for the Customer Admin platform.",
+      problem: "Webpack dev-server startup and rebuild times were slowing day-to-day iteration for the engineering team.",
+      approach: "Migrated the build pipeline from Webpack to Rspack, validating parity across loaders, plugins and production output.",
+      impact: "60% faster development builds, 10% smaller production bundles, and a measurably better developer experience.",
+      tags: ["Rspack", "Webpack", "Build Tooling", "Developer Experience"],
+    },
+  ];
+  document.getElementById('work-cards').innerHTML = workItems.map(w => `
+    <article class="card reveal p-6 sm:p-7">
+      <div class="flex items-baseline justify-between gap-4">
+        <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/45">${w.co}</span>
+        <span class="font-mono text-[11px] text-foreground/30">${w.num}</span>
+      </div>
+      <h3 class="mt-2 font-sans text-[22px] font-bold leading-tight tracking-tight">${w.title}</h3>
+      <p class="mt-2 text-[14px] leading-[1.65] text-foreground/70">${w.summary}</p>
+      <details class="wc-details mt-4">
+        <summary>Read case study</summary>
+        <dl class="wc-dl">
+          <dt>Problem</dt><dd>${w.problem}</dd>
+          <dt>Approach</dt><dd>${w.approach}</dd>
+          <dt>Impact</dt><dd>${w.impact}</dd>
+        </dl>
+      </details>
+      <div class="mt-5 flex flex-wrap gap-2">
+        ${w.tags.map(t => `<span class="rounded-full border border-foreground/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-foreground/55">${t}</span>`).join('')}
+      </div>
+    </article>
+  `).join('');
+
+  const thinking = [
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.2 15.8 4.8M8.2 7.8l6 8.4M15.8 7.2l-6 8.4"/></svg>',
+      title: "Systems Thinking",
+      body: "I optimize for the system, not the ticket. Every component lives inside a graph of dependencies — decisions should account for that graph, not just the immediate feature.",
+    },
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 20h8M12 18v2"/></svg>',
+      title: "Developer Experience",
+      body: "Good platforms disappear into the workflow. If an engineer has to think about the tool instead of the problem, the tool has failed.",
+    },
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><circle cx="12" cy="12" r="2.5"></circle></svg>',
+      title: "Platform Thinking",
+      body: "I build primitives that other teams compose, not one-off solutions. A platform succeeds when a dozen teams can build on it without asking me first.",
+    },
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 5l6 6-6 6M20 19V5M20 19l-6-6 6-6"/></svg>',
+      title: "Maintainability at Scale",
+      body: "Code is read far more than it's written. I write for the engineer who inherits this in two years without context — usually future me.",
+    },
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>',
+      title: "Engineering Productivity",
+      body: "Infrastructure is only worth building if it returns more time than it costs. I measure platform work in hours saved across teams, not lines shipped.",
+    },
+    {
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"></path></svg>',
+      title: "Technical Leadership",
+      body: "Architecture decisions are organizational decisions. I write them down, socialize tradeoffs early, and make sure the team understands why — not just what.",
+    },
+  ];
+  document.getElementById('thinking-cards').innerHTML = thinking.map(t => `
+    <div class="reveal">
+      <div class="icon-tile">${t.icon}</div>
+      <h3 class="mt-4 font-sans text-[17px] font-bold tracking-tight">${t.title}</h3>
+      <p class="mt-2 text-[14px] leading-[1.65] text-foreground/70">${t.body}</p>
+    </div>
+  `).join('');
+
+  const entries = [
+    { date: "2025 · Present", title: "Lead Software Engineer, DocuSign", body: "Own the Customer Admin platform's technical direction. Architected an AI admin agent (CopilotKit, LLM tool-calling) that cut manual admin effort by 47%, and migrated the build to Rspack, cutting dev-server startup by up to 99%.", logo: "docusign", logoAlt: "DocuSign" },
+    { date: "2025", title: "Handed over the web platform at Meesho", body: "Closed out six years — the platform grew from a single squad to 40+ engineers across the org.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2022", title: "Shipped Crystal, the design system", body: "100+ components, adopted by 15+ teams, cutting development time by 30%.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2020", title: "Microfrontend platform at scale", body: "Architected a microfrontend system handling 4K+ req/s at 99.99% uptime, cutting deployment time by 40%.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2019", title: "Joined Meesho as Software Architect", body: "Took ownership of the web platform's technical direction.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2018", title: "redBus", body: "Built the frontend architecture for a B2B SPA serving 1,500+ bus operators across 6 geographies, and pushed the Lighthouse score from 42 to 75.", logo: "redbus", logoAlt: "redBus" },
+    { date: "2016", title: "Started at Mindtree", body: "Shipped a booking platform for a global hotel chain across 6 modules, lifting booking efficiency by 20%.", logo: "mindtree", logoAlt: "Mindtree (now LTIMindtree)" },
+    { date: "2011", title: "Started engineering school", body: "Bachelor of Engineering at Bhilai Institute of Technology, Durg — where the habit of building things and finding out what breaks began." },
+  ];
+  document.getElementById('entries').innerHTML = entries.map((e, i) => {
+    const left = i % 2 === 1;
+    const logoImg = e.logo ? `<img src="logos/${e.logo}.png" alt="${e.logoAlt}" class="journey-logo-inline" />` : '';
+    const content = `
+      <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/55">${e.date}</div>
+      <div class="mt-1 flex items-center gap-2 ${left ? 'justify-end' : ''}">
+        <span class="text-[20px] font-semibold leading-snug">${e.title}</span>
+        ${logoImg}
+      </div>
+      <p class="mt-2 text-[15px] leading-[1.7] text-foreground/80">${e.body}</p>
+    `;
+    return `
+      <li class="relative grid grid-cols-2 items-start gap-x-10 reveal md:gap-x-16">
+        <div class="${left ? 'text-right' : ''}">${left ? content : ''}</div>
+        <div>${left ? '' : content}</div>
+        <span class="absolute left-1/2 top-2 h-[15px] w-[15px] -translate-x-1/2 rounded-full border border-foreground/40 bg-background" aria-hidden="true"></span>
+      </li>
+    `;
+  }).join('');
+
+  const writing = [
+    { title: "Micro-frontend architecture at scale", category: "Platform Engineering", date: "2020", time: "8 min read" },
+    { title: "Building a 100+ component design system", category: "Design Systems", date: "2022", time: "6 min read" },
+    { title: "Performance tuning: from 3.5s to 2.1s LCP", category: "Performance", date: "2021", time: "5 min read" },
+  ];
+  document.getElementById('writing-cards').innerHTML = writing.map(w => `
+    <a href="#" class="card reveal flex flex-col justify-between p-5">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-foreground/45">${w.category}</div>
+        <h3 class="mt-3 text-[16px] font-semibold leading-snug">${w.title}</h3>
+      </div>
+      <div class="mt-6 flex items-center justify-between font-mono text-[11px] text-foreground/50">
+        <span>${w.date} · ${w.time}</span>
+        <span class="text-foreground/70">Read →</span>
+      </div>
+    </a>
+  `).join('');
+
+  const stackGroups = [
+    { label: "AI", items: ["LLM APIs", "CopilotKit", "Prompt Engineering", "Context Engineering", "Agentic Workflows"] },
+    { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Rspack", "Webpack"] },
+    { label: "Platform", items: ["Node", "Docker", "Kubernetes", "GCP", "CI/CD"] },
+    { label: "Engineering", items: ["Storybook", "Testing", "Performance", "Observability"] },
+  ];
+  document.getElementById('stack').innerHTML = stackGroups.map(g => `
+    <div>
+      <div class="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/45">${g.label}</div>
+      <p class="mt-2 text-[15px] leading-[1.8] text-foreground/80">${g.items.join(" · ")}</p>
+    </div>
+  `).join('');
+
+  // Light/dark toggle
+  const pillSlider = document.getElementById('pill-slider');
+  const choiceButtons = document.querySelectorAll('[data-theme-choice]');
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    pillSlider.classList.toggle('is-dark', theme === 'dark');
+    choiceButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.themeChoice === theme));
+    localStorage.setItem('theme', theme);
+  }
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+  choiceButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(btn.dataset.themeChoice)));
+
+  // Reveal-on-scroll
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entriesList) => {
+      entriesList.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Magnetic buttons (desktop only, respects reduced motion)
+  if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('[data-magnetic]').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+</script>
+</body>
+</html>
