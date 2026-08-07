@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms</title>
+<title>Ayush Koshta - Software Architect, AI Systems &amp; Developer Platforms</title>
 <meta name="description" content="Ayush Koshta is a Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale. Currently at DocuSign, formerly Software Architect at Meesho." />
 <meta name="robots" content="index, follow" />
 <!-- TODO: replace with your real domain before deploying -->
@@ -14,13 +14,13 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ayush Koshta" />
-<meta property="og:title" content="Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms" />
+<meta property="og:title" content="Ayush Koshta - Software Architect, AI Systems &amp; Developer Platforms" />
 <meta property="og:description" content="Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale. Currently at DocuSign, formerly Meesho." />
 <meta property="og:url" content="https://ayushkoshta.dev/" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Ayush Koshta — Software Architect, AI Systems &amp; Developer Platforms" />
+<meta name="twitter:title" content="Ayush Koshta - Software Architect, AI Systems &amp; Developer Platforms" />
 <meta name="twitter:description" content="Lead Software Engineer building AI systems, developer platforms and software infrastructure at scale." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,6 +276,57 @@
     align-items: center;
     justify-content: center;
   }
+
+  /* Tooltip, used by stack items */
+  [data-tip] { position: relative; }
+  [data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 9px);
+    transform: translateX(-50%) translateY(4px);
+    width: max-content;
+    max-width: 220px;
+    background: rgb(var(--fg-rgb));
+    color: rgb(var(--bg-rgb));
+    font-family: 'Inter', ui-sans-serif, sans-serif;
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 8px 10px;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 20;
+  }
+  [data-tip]::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 4px);
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgb(var(--fg-rgb));
+    opacity: 0;
+    transition: opacity .15s ease;
+    pointer-events: none;
+    z-index: 20;
+  }
+  [data-tip]:hover::after, [data-tip]:focus-visible::after,
+  [data-tip]:hover::before, [data-tip]:focus-visible::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .stack-item {
+    cursor: default;
+    border-bottom: 1px dotted rgb(var(--fg-rgb) / .3);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .stack-item:hover, .stack-item:focus-visible { color: rgb(var(--fg-rgb)); border-color: rgb(var(--fg-rgb) / .7); }
 </style>
 </head>
 <body class="font-sans">
@@ -286,12 +337,12 @@
 
     <!-- Header -->
     <header class="flex items-center justify-between">
-      <a href="#main-content" class="logo-mark text-2xl" aria-label="Ayush Koshta — home">✦</a>
+      <a href="#main-content" class="logo-mark text-2xl" aria-label="Ayush Koshta - home">✦</a>
       <div class="flex items-center gap-6 sm:mr-6">
         <nav aria-label="Primary" class="hidden gap-6 font-mono text-[12px] uppercase tracking-[0.22em] sm:flex">
           <a href="#work" class="nav-link">Work</a>
-          <a href="#thinking" class="nav-link">Thinking</a>
           <a href="#experience" class="nav-link">Experience</a>
+          <a href="#thinking" class="nav-link">Thinking</a>
           <a href="#writing" class="nav-link">Writing</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
@@ -320,7 +371,7 @@
         I build products that simplify complex workflows, accelerate engineering teams and deliver exceptional user experiences.
       </p>
       <div class="mt-9 flex flex-wrap gap-3" data-magnetic-group>
-        <a href="Ayush_Architect_Docusign.pdf" target="_blank" rel="noopener" class="btn btn-solid" data-magnetic>Resume</a>
+        <a href="https://drive.google.com/uc?export=download&id=1arg66OxNa68pyEn6v_1FJyb0cHkPQTsp" download="Ayush_Resume.pdf" rel="noopener" class="btn btn-solid" data-magnetic>Resume</a>
         <a href="#work" class="btn btn-outline" data-magnetic>Selected Work</a>
         <a href="#writing" class="btn btn-outline" data-magnetic>Writing</a>
         <a href="#contact" class="btn btn-outline" data-magnetic>Contact</a>
@@ -335,11 +386,11 @@
 
     <!-- About -->
     <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]">
-      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">About</h2>
+      <h2 class="font-sans text-[22px] font-bold tracking-tight">About</h2>
       <div class="space-y-5 text-[17px] leading-[1.75] text-foreground/85">
-        <p>I think about software the way a city planner thinks about infrastructure — the interesting problem is rarely the single building, it's the roads, pipes and permits that let a thousand other people build without asking me first.</p>
-        <p>That's the thread through most of my work: <b>AI-powered enterprise agents</b>, <b>microfrontend platforms</b> serving thousands of requests a second, and <b>design systems</b> adopted across a dozen-plus teams. Different problems, same instinct — reduce the surface area a team has to think about so they can move faster on what actually matters.</p>
-        <p>I care about developer experience as much as user experience, about performance budgets as much as feature velocity, and about writing systems that are still legible to whoever inherits them in two years. Lately that means spending most of my time at the intersection of <b>agentic AI</b> and <b>enterprise platform engineering</b> — teaching large systems to do useful, permission-aware work without turning into a black box.</p>
+        <p>I think about software the way a city planner thinks about infrastructure. The interesting problem is rarely the single building: it's the roads, pipes and permits that let a thousand other people build without asking me first.</p>
+        <p>That's the thread through most of my work: <b>AI-powered enterprise agents</b>, <b>microfrontend platforms</b> serving thousands of requests a second, and <b>design systems</b> adopted across a dozen-plus teams. Different problems, same instinct: reduce the surface area a team has to think about so they can move faster on what actually matters.</p>
+        <p>I care about developer experience as much as user experience, about performance budgets as much as feature velocity, and about writing systems that are still legible to whoever inherits them in two years. Lately that means spending most of my time at the intersection of <b>agentic AI</b> and <b>enterprise platform engineering</b>: teaching large systems to do useful, permission-aware work without turning into a black box.</p>
         <p><a href="mailto:koshtaayush@gmail.com" class="underline underline-offset-4">say hello →</a></p>
       </div>
     </div>
@@ -347,15 +398,8 @@
     <!-- Selected Work -->
     <div class="mt-24 sm:mt-28" id="work">
       <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Selected Work</h2>
-      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Case studies, not thumbnails — the problem, the approach, the tradeoffs, and what happened after ship.</p>
+      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Case studies, not thumbnails: the problem, the approach, the tradeoffs, and what happened after ship.</p>
       <div class="mt-10 grid gap-5 md:grid-cols-2" id="work-cards"></div>
-    </div>
-
-    <!-- How I Think -->
-    <div class="mt-24 sm:mt-28" id="thinking">
-      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">How I Think</h2>
-      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Software architecture is about enabling teams, not just building features. A few beliefs that shape how I make decisions.</p>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="thinking-cards"></div>
     </div>
 
     <!-- Experience -->
@@ -367,6 +411,13 @@
       </div>
     </div>
 
+    <!-- How I Think -->
+    <div class="mt-24 sm:mt-28" id="thinking">
+      <h2 class="font-sans text-[22px] font-bold tracking-tight">How I Think</h2>
+      <p class="mt-3 max-w-xl text-[15px] leading-[1.7] text-foreground/60">Software architecture is about enabling teams, not just building features. A few beliefs that shape how I make decisions.</p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="thinking-cards"></div>
+    </div>
+
     <!-- Writing -->
     <div class="mt-24 sm:mt-28" id="writing">
       <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Writing</h2>
@@ -376,14 +427,35 @@
 
     <!-- Stack -->
     <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]" id="stack-section">
-      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Stack</h2>
+      <h2 class="font-sans text-[22px] font-bold tracking-tight">Stack</h2>
       <div class="grid gap-6 sm:grid-cols-2" id="stack"></div>
     </div>
 
     <!-- Outside work -->
     <div class="mt-24 grid gap-10 sm:mt-28 md:grid-cols-[2fr_3fr]">
-      <h2 class="font-mono text-[12px] uppercase tracking-[0.22em] text-foreground/60">Outside Work</h2>
-      <p class="text-[15px] leading-[1.8] text-foreground/60">Photography · Reading · Travel · Coffee · Learning guitar</p>
+      <h2 class="font-sans text-[22px] font-bold tracking-tight">Outside Work</h2>
+      <ul class="divide-y divide-foreground/10 border-t border-b border-foreground/10">
+        <li class="flex items-center justify-between py-4 text-[15px] text-foreground/60">
+          Photography
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        </li>
+        <li class="flex items-center justify-between py-4 text-[15px] text-foreground/60">
+          Reading
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"></path><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path></svg>
+        </li>
+        <li class="flex items-center justify-between py-4 text-[15px] text-foreground/60">
+          Travel
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </li>
+        <li class="flex items-center justify-between py-4 text-[15px] text-foreground/60">
+          Coffee
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+        </li>
+        <li class="flex items-center justify-between py-4 text-[15px] text-foreground/60">
+          Learning guitar
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg>
+        </li>
+      </ul>
     </div>
 
     <!-- Contact -->
@@ -398,8 +470,7 @@
     <footer class="mt-24 flex flex-col gap-4 border-t border-foreground/15 pt-6 sm:mt-28 sm:flex-row sm:items-end sm:justify-between">
       <div class="font-mono text-[12px] text-foreground/45">Designed &amp; built by Ayush · Always learning.</div>
       <div class="flex gap-6 font-mono text-[13px]">
-        <!-- TODO: replace with real LinkedIn URL -->
-        <a href="#" class="underline underline-offset-4">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/ayush-koshta/" target="_blank" rel="noopener" class="underline underline-offset-4">LinkedIn</a>
         <a href="mailto:koshtaayush@gmail.com" class="underline underline-offset-4">koshtaayush@gmail.com</a>
       </div>
     </footer>
@@ -425,6 +496,31 @@
 </script>
 
 <script>
+  // Interface sounds: synthesized square-wave blips via Web Audio, no audio files.
+  // On by default in dark mode, off in light mode — tied to the theme, no separate toggle.
+  let soundOn = false;
+  let audioCtx = null;
+  function beep(freq) {
+    if (!soundOn) return;
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      audioCtx = audioCtx || new Ctx();
+      if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(freq, t);
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(.05, t + .003);
+      gain.gain.exponentialRampToValueAtTime(.0001, t + .06);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(t);
+      osc.stop(t + .07);
+    } catch (e) {}
+  }
   const stats = [
     { v: "11+", l: "Years" },
     { v: "4K+", l: "Requests/sec" },
@@ -445,8 +541,8 @@
     {
       co: "DocuSign", num: "01", title: "AI Admin Agent",
       summary: "Architected and built an AI-powered enterprise agent using CopilotKit and LLM tool-calling.",
-      problem: "Admin workflows in the Customer Admin platform required manual, multi-step actions across several internal tools — slow, repetitive and error-prone at scale.",
-      approach: "Designed an AI agent on CopilotKit with LLM tool-calling, permission-aware execution, streaming responses and conversation state management across enterprise APIs — so the agent could act, not just chat.",
+      problem: "Admin workflows in the Customer Admin platform required manual, multi-step actions across several internal tools: slow, repetitive and error-prone at scale.",
+      approach: "Designed an AI agent on CopilotKit with LLM tool-calling, permission-aware execution, streaming responses and conversation state management across enterprise APIs, so the agent could act, not just chat.",
       impact: "Cut manual admin effort by 47%, live in production for the Customer Admin org.",
       tags: ["Tool Calling", "Permission-aware Execution", "Streaming Responses", "Conversation State", "Context Management", "Enterprise APIs"],
     },
@@ -462,7 +558,7 @@
       co: "Meesho", num: "03", title: "Crystal Design System",
       summary: "100+ reusable components adopted across 15+ engineering teams.",
       problem: "Inconsistent UI and duplicated component work across product teams were slowing delivery and fragmenting the product experience.",
-      approach: "Built Crystal from the primitives up — 100+ accessible, typed components, full Storybook documentation and an adoption/governance model for contributing teams.",
+      approach: "Built Crystal from the primitives up: 100+ accessible, typed components, full Storybook documentation and an adoption/governance model for contributing teams.",
       impact: "Adopted by 15+ teams, cutting development time by 30%.",
       tags: ["Storybook", "Accessibility", "Developer Productivity", "Governance"],
     },
@@ -496,12 +592,16 @@
       </div>
     </article>
   `).join('');
+  document.querySelectorAll('#work-cards .card').forEach((el, i) => {
+    el.addEventListener('mouseenter', () => beep(620 + i * 60));
+    el.addEventListener('focus', () => beep(620 + i * 60));
+  });
 
   const thinking = [
     {
       icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M8.2 7.2 15.8 4.8M8.2 7.8l6 8.4M15.8 7.2l-6 8.4"/></svg>',
       title: "Systems Thinking",
-      body: "I optimize for the system, not the ticket. Every component lives inside a graph of dependencies — decisions should account for that graph, not just the immediate feature.",
+      body: "I optimize for the system, not the ticket. Every component lives inside a graph of dependencies, and decisions should account for that graph, not just the immediate feature.",
     },
     {
       icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 20h8M12 18v2"/></svg>',
@@ -516,7 +616,7 @@
     {
       icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 5l6 6-6 6M20 19V5M20 19l-6-6 6-6"/></svg>',
       title: "Maintainability at Scale",
-      body: "Code is read far more than it's written. I write for the engineer who inherits this in two years without context — usually future me.",
+      body: "Code is read far more than it's written. I write for the engineer who inherits this in two years without context, usually future me.",
     },
     {
       icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>',
@@ -526,7 +626,7 @@
     {
       icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"></path></svg>',
       title: "Technical Leadership",
-      body: "Architecture decisions are organizational decisions. I write them down, socialize tradeoffs early, and make sure the team understands why — not just what.",
+      body: "Architecture decisions are organizational decisions. I write them down, socialize tradeoffs early, and make sure the team understands why, not just what.",
     },
   ];
   document.getElementById('thinking-cards').innerHTML = thinking.map(t => `
@@ -539,13 +639,13 @@
 
   const entries = [
     { date: "2025 · Present", title: "Lead Software Engineer, DocuSign", body: "Own the Customer Admin platform's technical direction. Architected an AI admin agent (CopilotKit, LLM tool-calling) that cut manual admin effort by 47%, and migrated the build to Rspack, cutting dev-server startup by up to 99%.", logo: "docusign", logoAlt: "DocuSign" },
-    { date: "2025", title: "Handed over the web platform at Meesho", body: "Closed out six years — the platform grew from a single squad to 40+ engineers across the org.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2025", title: "Handed over the web platform at Meesho", body: "Closed out six years. The platform grew from a single squad to 40+ engineers across the org. Grew from SDE-2 to Architect in a span of 6 years", logo: "meesho", logoAlt: "Meesho" },
     { date: "2022", title: "Shipped Crystal, the design system", body: "100+ components, adopted by 15+ teams, cutting development time by 30%.", logo: "meesho", logoAlt: "Meesho" },
     { date: "2020", title: "Microfrontend platform at scale", body: "Architected a microfrontend system handling 4K+ req/s at 99.99% uptime, cutting deployment time by 40%.", logo: "meesho", logoAlt: "Meesho" },
-    { date: "2019", title: "Joined Meesho as Software Architect", body: "Took ownership of the web platform's technical direction.", logo: "meesho", logoAlt: "Meesho" },
+    { date: "2019", title: "Joined Meesho to build for Bharat", body: "Took ownership of the web platform's technical direction.", logo: "meesho", logoAlt: "Meesho" },
     { date: "2018", title: "redBus", body: "Built the frontend architecture for a B2B SPA serving 1,500+ bus operators across 6 geographies, and pushed the Lighthouse score from 42 to 75.", logo: "redbus", logoAlt: "redBus" },
     { date: "2016", title: "Started at Mindtree", body: "Shipped a booking platform for a global hotel chain across 6 modules, lifting booking efficiency by 20%.", logo: "mindtree", logoAlt: "Mindtree (now LTIMindtree)" },
-    { date: "2011", title: "Started engineering school", body: "Bachelor of Engineering at Bhilai Institute of Technology, Durg — where the habit of building things and finding out what breaks began." },
+    { date: "2011", title: "Started engineering school", body: "Bachelor of Engineering at Bhilai Institute of Technology, Durg, where the habit of building things and finding out what breaks began." },
   ];
   document.getElementById('entries').innerHTML = entries.map((e, i) => {
     const left = i % 2 === 1;
@@ -568,12 +668,12 @@
   }).join('');
 
   const writing = [
-    { title: "Micro-frontend architecture at scale", category: "Platform Engineering", date: "2020", time: "8 min read" },
-    { title: "Building a 100+ component design system", category: "Design Systems", date: "2022", time: "6 min read" },
-    { title: "Performance tuning: from 3.5s to 2.1s LCP", category: "Performance", date: "2021", time: "5 min read" },
+    { title: "Micro-frontend architecture at scale", category: "Platform Engineering", date: "2020", time: "8 min read", url: "https://medium.com/meesho-tech/how-micro-frontend-architecture-reduced-meeshos-dependencies-and-accelerated-code-delivery-1b8a42075318" },
+    { title: "Building a 100+ component design system", category: "Design Systems", date: "2022", time: "6 min read", url: "https://www.linkedin.com/posts/meesho_introducing-crystal-our-native-design-system-activity-6934821810043502592-fHiF/" },
+    { title: "Performance tuning: from 3.5s to 2.1s LCP", category: "Performance", date: "2021", time: "5 min read", url: "https://medium.com/meesho-tech/caring-for-the-performance-of-our-supplier-applications-a-case-study-c99d165db343" },
   ];
   document.getElementById('writing-cards').innerHTML = writing.map(w => `
-    <a href="#" class="card reveal flex flex-col justify-between p-5">
+    <a href="${w.url}" target="_blank" rel="noopener" class="card reveal flex flex-col justify-between p-5">
       <div>
         <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-foreground/45">${w.category}</div>
         <h3 class="mt-3 text-[16px] font-semibold leading-snug">${w.title}</h3>
@@ -584,17 +684,44 @@
       </div>
     </a>
   `).join('');
+  document.querySelectorAll('#writing-cards .card').forEach((el, i) => {
+    el.addEventListener('mouseenter', () => beep(560 + i * 70));
+    el.addEventListener('focus', () => beep(560 + i * 70));
+  });
 
   const stackGroups = [
-    { label: "AI", items: ["LLM APIs", "CopilotKit", "Prompt Engineering", "Context Engineering", "Agentic Workflows"] },
-    { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Rspack", "Webpack"] },
-    { label: "Platform", items: ["Node", "Docker", "Kubernetes", "GCP", "CI/CD"] },
-    { label: "Engineering", items: ["Storybook", "Testing", "Performance", "Observability"] },
+    { label: "AI", items: [
+      { name: "LLM APIs", tip: "Direct model integration for the admin agent's tool-calling loop." },
+      { name: "CopilotKit", tip: "Lets the agent act, not just answer — tool-calling wired to real admin APIs." },
+      { name: "Prompt Engineering", tip: "The difference between an agent that helps and one that guesses." },
+      { name: "Context Engineering", tip: "Managing what the agent remembers across a long admin session." },
+      { name: "Agentic Workflows", tip: "Multi-step, permission-aware task execution instead of single-shot prompts." },
+    ] },
+    { label: "Frontend", items: [
+      { name: "React", tip: "Still the fastest way to ship a UI a dozen teams can build on." },
+      { name: "Next.js", tip: "SSR where it earns its keep, static where it doesn't." },
+      { name: "TypeScript", tip: "Non-negotiable past a two-person team." },
+      { name: "Rspack", tip: "Swapped in for Webpack — 60% faster local builds, smaller output." },
+      { name: "Webpack", tip: "Ran Crystal and the microfrontend platform on it for years before Rspack." },
+    ] },
+    { label: "Platform", items: [
+      { name: "Node", tip: "The glue between the frontend platform and everything it talks to." },
+      { name: "Docker", tip: "Same environment on my laptop as in prod, no exceptions." },
+      { name: "Kubernetes", tip: "Where the microfrontend platform runs, at 4K+ req/sec." },
+      { name: "GCP", tip: "Home for the Customer Admin platform's infra." },
+      { name: "CI/CD", tip: "Let 15+ teams ship independently — cut deploy time 40%." },
+    ] },
+    { label: "Engineering", items: [
+      { name: "Storybook", tip: "Living documentation for 100+ Crystal components." },
+      { name: "Testing", tip: "Confidence to refactor a platform 40 engineers depend on." },
+      { name: "Performance", tip: "Budgets, not afterthoughts — took redBus from a 42 to 75 Lighthouse score." },
+      { name: "Observability", tip: "You can't fix what you can't see in production." },
+    ] },
   ];
   document.getElementById('stack').innerHTML = stackGroups.map(g => `
     <div>
       <div class="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/45">${g.label}</div>
-      <p class="mt-2 text-[15px] leading-[1.8] text-foreground/80">${g.items.join(" · ")}</p>
+      <p class="mt-2 text-[15px] leading-[1.8] text-foreground/80">${g.items.map(it => `<span class="stack-item" data-tip="${it.tip}" tabindex="0">${it.name}</span>`).join(", ")}</p>
     </div>
   `).join('');
 
@@ -606,9 +733,11 @@
     pillSlider.classList.toggle('is-dark', theme === 'dark');
     choiceButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.themeChoice === theme));
     localStorage.setItem('theme', theme);
+    // Dark mode brings its own sound, no separate toggle.
+    soundOn = theme === 'dark';
   }
   applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
-  choiceButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(btn.dataset.themeChoice)));
+  choiceButtons.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.themeChoice); beep(760); }));
 
   // Reveal-on-scroll
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -638,6 +767,7 @@
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
   }
+  document.querySelectorAll('[data-magnetic]').forEach(btn => btn.addEventListener('click', () => beep(940)));
 </script>
 </body>
 </html>
